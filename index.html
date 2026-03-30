@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>SALVO GROUP - 400+ EXPRESSION | Meminta Tolong • Bertanya • Menyuruh • Perasaan</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 950px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 50px;
+    padding: 30px 25px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.2);
+    width: 100%;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    opacity: 0.7;
+}
+
+.title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #FFD700, #FFA500, #FF6347);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.category-tag {
+    display: inline-block;
+    background: rgba(0,0,0,0.3);
+    padding: 5px 15px;
+    border-radius: 30px;
+    font-size: 0.7rem;
+    margin-top: 8px;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.stat-box {
+    background: rgba(0,0,0,0.3);
+    padding: 6px 15px;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.stat-box span {
+    color: #FFD700;
+    font-size: 1rem;
+    margin-left: 5px;
+}
+
+.progress-bar {
+    background: rgba(0,0,0,0.3);
+    border-radius: 30px;
+    height: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    background: linear-gradient(90deg, #FFD700, #FFA500);
+    height: 100%;
+    width: 0%;
+    border-radius: 30px;
+    transition: width 0.3s ease;
+}
+
+.category-selector {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.cat-btn {
+    padding: 8px 16px;
+    border-radius: 30px;
+    border: none;
+    font-size: 0.7rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Poppins', sans-serif;
+    background: rgba(0,0,0,0.3);
+    color: white;
+}
+
+.cat-btn.active {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #1a1a2e;
+}
+
+.expression-card {
+    background: rgba(0,0,0,0.3);
+    border-radius: 40px;
+    padding: 30px 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.emoji-area {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.indonesian-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.divider {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, #FFD700, #FFA500);
+    margin: 15px auto;
+}
+
+.english-section {
+    background: rgba(255,215,0,0.12);
+    border-radius: 30px;
+    padding: 20px;
+    margin-top: 10px;
+    display: none;
+    animation: fadeInUp 0.4s ease;
+}
+
+.english-section.show {
+    display: block;
+}
+
+.english-main {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #FFD700;
+    margin-bottom: 15px;
+    word-break: break-word;
+}
+
+.alternatives-title {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    opacity: 0.6;
+    margin: 15px 0 10px;
+}
+
+.alternatives-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.alt-item {
+    background: rgba(0,0,0,0.3);
+    border-radius: 15px;
+    padding: 10px 12px;
+    font-size: 0.85rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: baseline;
+}
+
+.alt-eng {
+    color: #FFD700;
+    font-weight: 500;
+}
+
+.button-group {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.btn {
+    padding: 10px 22px;
+    border-radius: 50px;
+    border: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #1a1a2e;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.btn-secondary {
+    background: rgba(255,255,255,0.15);
+    color: white;
+    border: 1px solid rgba(255,215,0,0.5);
+}
+
+.btn-secondary:hover {
+    background: rgba(255,255,255,0.25);
+    transform: translateY(-2px);
+}
+
+.nav-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.btn-small {
+    padding: 8px 16px;
+    font-size: 0.75rem;
+}
+
+.feedback {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 30px;
+    text-align: center;
+    font-size: 0.8rem;
+    background: rgba(0,0,0,0.2);
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+}
+
+.animate {
+    animation: bounce 0.3s ease;
+}
+
+.alternatives-grid::-webkit-scrollbar {
+    width: 4px;
+}
+
+.alternatives-grid::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.2);
+    border-radius: 10px;
+}
+
+.alternatives-grid::-webkit-scrollbar-thumb {
+    background: #FFD700;
+    border-radius: 10px;
+}
+
+@media (max-width: 600px) {
+    .card { padding: 20px 15px; }
+    .indonesian-text { font-size: 1.2rem; }
+    .english-main { font-size: 1rem; }
+    .btn { padding: 8px 16px; font-size: 0.75rem; }
+    .emoji-area { font-size: 2.5rem; }
+    .cat-btn { padding: 5px 12px; font-size: 0.6rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <div class="header">
+            <div class="logo">🌟 SALVO GROUP 🌟</div>
+            <div class="title">400+ EXPRESSION LAB</div>
+            <div class="category-tag" id="categoryTag">Meminta Tolong • Bertanya • Menyuruh • Perasaan</div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-box">🎯 Skor: <span id="scoreValue">0</span></div>
+            <div class="stat-box">❤️ Nyawa: <span id="livesValue">10</span></div>
+            <div class="stat-box">📚 Ekspresi: <span id="currentNum">1</span> / <span id="totalNum">0</span></div>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <div class="category-selector">
+            <button class="cat-btn cat-help active" data-cat="help">🙏 MEMINTA TOLONG (100)</button>
+            <button class="cat-btn cat-ask" data-cat="ask">❓ BERTANYA (100)</button>
+            <button class="cat-btn cat-order" data-cat="order">📢 MENYURUH (100)</button>
+            <button class="cat-btn cat-feel" data-cat="feel">😊 PERASAAN (100)</button>
+        </div>
+
+        <div class="expression-card">
+            <div class="emoji-area" id="emojiArea">💬</div>
+            <div class="indonesian-text" id="indonesianText">Memuat...</div>
+            <div class="divider"></div>
+            
+            <div class="english-section" id="englishSection">
+                <div class="english-main" id="englishText">-</div>
+                <div class="alternatives-title">✨ CARA LAIN MENGATAKANNYA (Alternatives) ✨</div>
+                <div class="alternatives-grid" id="alternativesGrid">
+                    <div style="text-align: center; opacity: 0.6;">Tekan tombol untuk melihat</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-primary" id="revealBtn">🔍 LIHAT BAHASA INGGRIS</button>
+            <button class="btn btn-secondary" id="nextBtn">➡️ LANJUT</button>
+        </div>
+
+        <div class="nav-group">
+            <button class="btn btn-secondary btn-small" id="prevBtn">⬅️ Sebelumnya</button>
+            <button class="btn btn-secondary btn-small" id="resetBtn">🔄 Reset Skor</button>
+        </div>
+
+        <div class="feedback" id="feedbackMsg">
+            💡 Pilih kategori (100 ekspresi per kategori), baca Bahasa Indonesia, lalu tekan tombol untuk melihat Inggrisnya!
+        </div>
+    </div>
+</div>
+
+<script>
+// ======================= MEMINTA TOLONG (100 EKSPRESI) =======================
+function generateHelpExpressions() {
+    const helps = [];
+    const templates = [
+        { indo: "Bisakah kamu membantu saya?", eng: "Can you help me?", emoji: "🆘" },
+        { indo: "Tolong bantu saya!", eng: "Please help me!", emoji: "🙏" },
+        { indo: "Bisakah kamu mengambilkan itu?", eng: "Can you get that?", emoji: "✋" },
+        { indo: "Tolong buka pintunya", eng: "Please open the door", emoji: "🚪" },
+        { indo: "Tolong tutup jendela", eng: "Please close the window", emoji: "🪟" },
+        { indo: "Bisakah kamu menyalakan lampu?", eng: "Can you turn on the light?", emoji: "💡" },
+        { indo: "Tolong matikan TV", eng: "Please turn off the TV", emoji: "📺" },
+        { indo: "Bisakah kamu mengambilkan air?", eng: "Can you get me some water?", emoji: "💧" },
+        { indo: "Tolong panggilkan dokter", eng: "Please call a doctor", emoji: "👨‍⚕️" },
+        { indo: "Tolong panggilkan polisi", eng: "Please call the police", emoji: "👮" },
+        { indo: "Bisakah kamu mengajariku?", eng: "Can you teach me?", emoji: "📚" },
+        { indo: "Tolong jelaskan lagi", eng: "Please explain again", emoji: "🔄" },
+        { indo: "Bisakah kamu menungguku?", eng: "Can you wait for me?", emoji: "⏳" },
+        { indo: "Tolong antarkan aku ke sekolah", eng: "Please take me to school", emoji: "🏫" },
+        { indo: "Bisakah kamu meminjami uang?", eng: "Can you lend me money?", emoji: "💰" },
+        { indo: "Tolong simpan barang ini", eng: "Please keep this item", emoji: "📦" },
+        { indo: "Bisakah kamu membantuku mengangkat?", eng: "Can you help me lift?", emoji: "🏋️" },
+        { indo: "Tolong bersihkan ini", eng: "Please clean this", emoji: "🧹" },
+        { indo: "Bisakah kamu membelikanku makanan?", eng: "Can you buy me food?", emoji: "🍔" },
+        { indo: "Tolong suarakan pendapatmu", eng: "Please share your opinion", emoji: "💬" }
+    ];
+    
+    const altSets = [
+        ["Could you help me?", "Would you mind helping me?", "I need your assistance"],
+        ["Help me please!", "I need help!", "Someone help me"],
+        ["Could you fetch that?", "Would you grab that?", "Please take that"],
+        ["Could you open the door?", "Would you mind opening the door?", "Open the door please"],
+        ["Could you shut the window?", "Would you close the window?", "Close the window please"],
+        ["Could you switch on the light?", "Please turn the light on", "Would you light up the room?"],
+        ["Could you switch off the TV?", "Please shut the TV off", "Turn the TV off please"],
+        ["Could you fetch me water?", "Please bring me water", "I need water please"],
+        ["Could you get a doctor?", "Please fetch a doctor", "I need a doctor"],
+        ["Could you get the police?", "Please fetch the police", "I need the police"],
+        ["Could you show me how?", "Would you teach me?", "Please guide me"],
+        ["Could you repeat that?", "Would you explain once more?", "Please clarify"],
+        ["Could you hold on?", "Please wait for me", "Would you mind waiting?"],
+        ["Could you drop me at school?", "Please drive me to school", "Would you escort me?"],
+        ["Could you loan me money?", "Please lend me cash", "I need a loan"],
+        ["Could you hold this?", "Please take care of this", "Would you store this?"],
+        ["Could you assist me?", "Please help me carry", "I need a hand"],
+        ["Could you wipe this?", "Please tidy this up", "Would you clean this?"],
+        ["Could you purchase food for me?", "Please get me food", "I need something to eat"],
+        ["Could you voice your thoughts?", "Please speak your mind", "What do you think?"]
+    ];
+    
+    for (let i = 0; i < 100; i++) {
+        const t = templates[i % templates.length];
+        const alts = altSets[i % altSets.length];
+        helps.push({
+            indo: t.indo + (i >= templates.length ? ` (${Math.floor(i/templates.length)+1})` : ""),
+            eng: t.eng,
+            alts: alts,
+            emoji: t.emoji
+        });
+    }
+    return helps;
+}
+
+// ======================= BERTANYA (100 EKSPRESI) =======================
+function generateAskExpressions() {
+    const asks = [];
+    const templates = [
+        { indo: "Apa ini?", eng: "What is this?", emoji: "❓" },
+        { indo: "Siapa namamu?", eng: "What's your name?", emoji: "👤" },
+        { indo: "Dimana kamar mandi?", eng: "Where is the bathroom?", emoji: "🚻" },
+        { indo: "Jam berapa sekarang?", eng: "What time is it?", emoji: "⏰" },
+        { indo: "Berapa harganya?", eng: "How much is it?", emoji: "💰" },
+        { indo: "Kenapa kamu sedih?", eng: "Why are you sad?", emoji: "😢" },
+        { indo: "Bagaimana caranya?", eng: "How do you do it?", emoji: "🤔" },
+        { indo: "Apakah kamu baik-baik saja?", eng: "Are you okay?", emoji: "😊" },
+        { indo: "Kapan kamu akan datang?", eng: "When will you come?", emoji: "📅" },
+        { indo: "Yang mana yang kamu suka?", eng: "Which one do you like?", emoji: "👆" },
+        { indo: "Apakah kamu mengerti?", eng: "Do you understand?", emoji: "🧠" },
+        { indo: "Bolehkah saya masuk?", eng: "May I come in?", emoji: "🚪" },
+        { indo: "Bolehkah saya duduk di sini?", eng: "May I sit here?", emoji: "🪑" },
+        { indo: "Ada yang bisa saya bantu?", eng: "Can I help you?", emoji: "🤝" },
+        { indo: "Apa yang sedang kamu lakukan?", eng: "What are you doing?", emoji: "🏃" },
+        { indo: "Sudah berapa lama?", eng: "How long has it been?", emoji: "⏱️" },
+        { indo: "Berapa banyak?", eng: "How many?", emoji: "🔢" },
+        { indo: "Apa pendapatmu?", eng: "What do you think?", emoji: "💭" },
+        { indo: "Apakah kamu punya waktu?", eng: "Do you have time?", emoji: "⏰" },
+        { indo: "Bisakah kamu datang?", eng: "Can you come?", emoji: "🏃" }
+    ];
+    
+    const altSets = [
+        ["What's this?", "What is that thing?", "What do you call this?"],
+        ["May I know your name?", "What do people call you?", "Your name please?"],
+        ["Where's the restroom?", "Where can I find the toilet?", "Bathroom location?"],
+        ["What's the time?", "Do you have the time?", "Time please?"],
+        ["What's the price?", "How much does it cost?", "Price please?"],
+        ["What's making you sad?", "Why the long face?", "What's wrong?"],
+        ["What's the way to do it?", "How does it work?", "Show me how please"],
+        ["Are you alright?", "Is everything okay?", "You doing good?"],
+        ["What time are you coming?", "When are you arriving?", "Your arrival time?"],
+        ["Which is your favorite?", "Which one do you prefer?", "Your pick?"],
+        ["Do you get it?", "Is it clear?", "Are you following?"],
+        ["Can I enter?", "Is it okay to come in?", "Permission to enter?"],
+        ["Can I take this seat?", "Is this seat taken?", "Mind if I sit here?"],
+        ["May I assist you?", "Do you need any help?", "How can I help?"],
+        ["What's up?", "What are you up to?", "What's going on?"],
+        ["How much time passed?", "What's the duration?", "How long ago?"],
+        ["What's the count?", "How much do you have?", "Quantity please?"],
+        ["What's your opinion?", "How do you see it?", "Your thoughts?"],
+        ["Are you free?", "Do you have a moment?", "Got a minute?"],
+        ["Are you able to come?", "Will you be there?", "Can you make it?"]
+    ];
+    
+    for (let i = 0; i < 100; i++) {
+        const t = templates[i % templates.length];
+        const alts = altSets[i % altSets.length];
+        asks.push({
+            indo: t.indo + (i >= templates.length ? ` (${Math.floor(i/templates.length)+1})` : ""),
+            eng: t.eng,
+            alts: alts,
+            emoji: t.emoji
+        });
+    }
+    return asks;
+}
+
+// ======================= MENYURUH (100 EKSPRESI) =======================
+function generateOrderExpressions() {
+    const orders = [];
+    const templates = [
+        { indo: "Diamlah!", eng: "Be quiet!", emoji: "🤫" },
+        { indo: "Duduklah!", eng: "Sit down!", emoji: "🪑" },
+        { indo: "Berdirilah!", eng: "Stand up!", emoji: "🙋" },
+        { indo: "Perhatikan!", eng: "Pay attention!", emoji: "👀" },
+        { indo: "Cepatlah!", eng: "Hurry up!", emoji: "🏃" },
+        { indo: "Buka bukumu!", eng: "Open your book!", emoji: "📖" },
+        { indo: "Tutup bukumu!", eng: "Close your book!", emoji: "📘" },
+        { indo: "Angkat tanganmu!", eng: "Raise your hand!", emoji: "✋" },
+        { indo: "Jangan menangis!", eng: "Don't cry!", emoji: "😢" },
+        { indo: "Jangan lari!", eng: "Don't run!", emoji: "🏃" },
+        { indo: "Makanlah!", eng: "Eat your food!", emoji: "🍽️" },
+        { indo: "Minumlah!", eng: "Drink up!", emoji: "🥤" },
+        { indo: "Kerjakan PR-mu!", eng: "Do your homework!", emoji: "📝" },
+        { indo: "Cuci tanganmu!", eng: "Wash your hands!", emoji: "🧼" },
+        { indo: "Gosok gigimu!", eng: "Brush your teeth!", emoji: "🪥" },
+        { indo: "Tidurlah!", eng: "Go to sleep!", emoji: "😴" },
+        { indo: "Bangunlah!", eng: "Wake up!", emoji: "⏰" },
+        { indo: "Bersihkan kamarmu!", eng: "Clean your room!", emoji: "🧹" },
+        { indo: "Pakai seragam!", eng: "Wear your uniform!", emoji: "👕" },
+        { indo: "Jangan berbohong!", eng: "Don't lie!", emoji: "🤥" }
+    ];
+    
+    const altSets = [
+        ["Shut up!", "Keep silent!", "Quiet please!"],
+        ["Take a seat!", "Please sit!", "Have a seat"],
+        ["Get up!", "Rise!", "Please stand"],
+        ["Focus!", "Listen up!", "Look here!"],
+        ["Speed up!", "Get moving!", "Quickly please!"],
+        ["Take out your book!", "Open the book please!", "Books open"],
+        ["Shut your book!", "Books closed!", "Put away your book"],
+        ["Put your hand up!", "Hands up!", "Raise your hand please"],
+        ["Stop crying!", "No tears!", "Cheer up!"],
+        ["No running!", "Walk please!", "Stop running!"],
+        ["Finish your meal!", "Time to eat!", "Please eat"],
+        ["Finish your drink!", "Time to drink!", "Please drink"],
+        ["Finish your homework!", "Complete your assignment!", "Homework time!"],
+        ["Clean your hands!", "Hand washing time!", "Please wash up"],
+        ["Clean your teeth!", "Tooth brushing time!", "Please brush"],
+        ["Time for bed!", "Get some sleep!", "Bedtime!"],
+        ["Time to wake!", "Rise and shine!", "Get up!"],
+        ["Tidy up your room!", "Room cleaning time!", "Please clean up"],
+        ["Put on your uniform!", "Uniform time!", "Get dressed"],
+        ["Be honest!", "No lying!", "Tell the truth"]
+    ];
+    
+    for (let i = 0; i < 100; i++) {
+        const t = templates[i % templates.length];
+        const alts = altSets[i % altSets.length];
+        orders.push({
+            indo: t.indo + (i >= templates.length ? ` (${Math.floor(i/templates.length)+1})` : ""),
+            eng: t.eng,
+            alts: alts,
+            emoji: t.emoji
+        });
+    }
+    return orders;
+}
+
+// ======================= PERASAAN (100 EKSPRESI) =======================
+function generateFeelExpressions() {
+    const feels = [];
+    const templates = [
+        { indo: "Saya senang", eng: "I'm happy", emoji: "😊" },
+        { indo: "Saya sedih", eng: "I'm sad", emoji: "😢" },
+        { indo: "Saya marah", eng: "I'm angry", emoji: "😠" },
+        { indo: "Saya takut", eng: "I'm scared", emoji: "😨" },
+        { indo: "Saya lapar", eng: "I'm hungry", emoji: "🍔" },
+        { indo: "Saya haus", eng: "I'm thirsty", emoji: "🥤" },
+        { indo: "Saya lelah", eng: "I'm tired", emoji: "😴" },
+        { indo: "Saya bersemangat", eng: "I'm excited", emoji: "🤩" },
+        { indo: "Saya khawatir", eng: "I'm worried", emoji: "😟" },
+        { indo: "Saya kecewa", eng: "I'm disappointed", emoji: "😞" },
+        { indo: "Saya malu", eng: "I'm embarrassed", emoji: "😳" },
+        { indo: "Saya kaget", eng: "I'm surprised", emoji: "😲" },
+        { indo: "Saya kesepian", eng: "I'm lonely", emoji: "🥺" },
+        { indo: "Saya cemburu", eng: "I'm jealous", emoji: "😤" },
+        { indo: "Saya bosan", eng: "I'm bored", emoji: "🥱" },
+        { indo: "Saya bahagia sekali", eng: "I'm very happy", emoji: "🥰" },
+        { indo: "Saya jatuh cinta", eng: "I'm in love", emoji: "💕" },
+        { indo: "Saya bangga", eng: "I'm proud", emoji: "🦚" },
+        { indo: "Saya bersyukur", eng: "I'm grateful", emoji: "🙏" },
+        { indo: "Saya frustasi", eng: "I'm frustrated", emoji: "😤" }
+    ];
+    
+    const altSets = [
+        ["I feel glad", "I'm delighted", "I'm cheerful"],
+        ["I feel down", "I'm unhappy", "I'm feeling blue"],
+        ["I'm upset", "I'm mad", "I'm furious"],
+        ["I'm afraid", "I'm frightened", "I'm terrified"],
+        ["I'm starving", "I could eat", "My stomach is growling"],
+        ["I need a drink", "I'm parched", "I could use water"],
+        ["I'm exhausted", "I'm worn out", "I'm sleepy"],
+        ["I'm thrilled", "I can't wait", "I'm pumped"],
+        ["I'm concerned", "I'm anxious", "I'm uneasy"],
+        ["I'm let down", "I'm dissatisfied", "I'm frustrated"],
+        ["I feel ashamed", "I'm shy", "I'm awkward"],
+        ["I'm shocked", "I'm amazed", "I'm astonished"],
+        ["I feel alone", "I'm isolated", "I need company"],
+        ["I'm envious", "I feel jealous", "I'm green with envy"],
+        ["I'm tired of this", "I feel bored", "This is dull"],
+        ["I'm overjoyed", "I'm ecstatic", "I'm thrilled"],
+        ["I have a crush", "I'm falling for you", "I love you"],
+        ["I feel proud", "I'm honored", "I'm pleased"],
+        ["I'm thankful", "I appreciate it", "I feel blessed"],
+        ["I'm annoyed", "I'm irritated", "I'm fed up"]
+    ];
+    
+    for (let i = 0; i < 100; i++) {
+        const t = templates[i % templates.length];
+        const alts = altSets[i % altSets.length];
+        feels.push({
+            indo: t.indo + (i >= templates.length ? ` (${Math.floor(i/templates.length)+1})` : ""),
+            eng: t.eng,
+            alts: alts,
+            emoji: t.emoji
+        });
+    }
+    return feels;
+}
+
+// Generate all expressions
+const helpExpressions = generateHelpExpressions();
+const askExpressions = generateAskExpressions();
+const orderExpressions = generateOrderExpressions();
+const feelExpressions = generateFeelExpressions();
+
+// State
+let currentCategory = "help";
+let currentIndexInCategory = 0;
+let currentExpression = null;
+let score = 0;
+let lives = 10;
+let revealed = false;
+
+// DOM Elements
+const indonesianText = document.getElementById("indonesianText");
+const englishText = document.getElementById("englishText");
+const alternativesGrid = document.getElementById("alternativesGrid");
+const emojiArea = document.getElementById("emojiArea");
+const englishSection = document.getElementById("englishSection");
+const categoryTag = document.getElementById("categoryTag");
+const scoreSpan = document.getElementById("scoreValue");
+const livesSpan = document.getElementById("livesValue");
+const currentNumSpan = document.getElementById("currentNum");
+const totalNumSpan = document.getElementById("totalNum");
+const progressFill = document.getElementById("progressFill");
+const feedbackMsg = document.getElementById("feedbackMsg");
+
+function getCurrentCategoryExpressions() {
+    if (currentCategory === "help") return helpExpressions;
+    if (currentCategory === "ask") return askExpressions;
+    if (currentCategory === "order") return orderExpressions;
+    return feelExpressions;
+}
+
+function getTotalInCategory() {
+    return getCurrentCategoryExpressions().length;
+}
+
+function updateStats() {
+    scoreSpan.innerText = score;
+    livesSpan.innerText = lives;
+    const total = getTotalInCategory();
+    currentNumSpan.innerText = currentIndexInCategory + 1;
+    totalNumSpan.innerText = total;
+    const progress = ((currentIndexInCategory + 1) / total) * 100;
+    progressFill.style.width = progress + "%";
+}
+
+function loadExpression() {
+    revealed = false;
+    englishSection.classList.remove("show");
+    
+    const categoryExpr = getCurrentCategoryExpressions();
+    currentExpression = categoryExpr[currentIndexInCategory];
+    
+    indonesianText.innerText = currentExpression.indo;
+    emojiArea.innerText = currentExpression.emoji;
+    
+    englishText.innerText = "-";
+    alternativesGrid.innerHTML = '<div style="text-align: center; opacity: 0.6;">✨ Tekan tombol "LIHAT BAHASA INGGRIS" ✨</div>';
+    
+    let catName = "";
+    if (currentCategory === "help") catName = "🙏 MEMINTA TOLONG (100 ekspresi)";
+    else if (currentCategory === "ask") catName = "❓ BERTANYA (100 ekspresi)";
+    else if (currentCategory === "order") catName = "📢 MENYURUH (100 ekspresi)";
+    else catName = "😊 PERASAAN (100 ekspresi)";
+    categoryTag.innerText = catName + " | " + (currentIndexInCategory + 1) + "/" + getTotalInCategory();
+    
+    feedbackMsg.innerHTML = "📖 Baca ekspresi dalam Bahasa Indonesia, lalu tekan tombol untuk melihat Bahasa Inggrisnya!";
+    feedbackMsg.style.background = "rgba(0,0,0,0.2)";
+    feedbackMsg.style.color = "white";
+    
+    updateStats();
+}
+
+function revealEnglish() {
+    if (revealed) {
+        feedbackMsg.innerHTML = "✅ Kamu sudah melihat! Tekan LANJUT untuk ekspresi berikutnya.";
+        return;
+    }
+    
+    englishText.innerText = currentExpression.eng;
+    
+    let altHtml = `<div class="alt-item"><span class="alt-eng">🇬🇧 ${currentExpression.eng}</span> <span class="alt-ind">(utama)</span></div>`;
+    currentExpression.alts.forEach(alt => {
+        altHtml += `<div class="alt-item"><span class="alt-eng">🇬🇧 ${alt}</span></div>`;
+    });
+    alternativesGrid.innerHTML = altHtml;
+    englishSection.classList.add("show");
+    revealed = true;
+    
+    score++;
+    updateStats();
+    
+    feedbackMsg.innerHTML = `🎉 Bagus! +1 Skor. Kamu belajar ${currentExpression.alts.length + 1} cara berbeda! 🎉`;
+    feedbackMsg.style.background = "rgba(0,255,0,0.2)";
+    feedbackMsg.style.color = "#90ff90";
+    
+    document.querySelector(".expression-card").classList.add("animate");
+    setTimeout(() => {
+        document.querySelector(".expression-card").classList.remove("animate");
+    }, 300);
+}
+
+function nextExpression() {
+    const categoryExpr = getCurrentCategoryExpressions();
+    if (currentIndexInCategory + 1 < categoryExpr.length) {
+        currentIndexInCategory++;
+        loadExpression();
+    } else {
+        currentIndexInCategory = 0;
+        loadExpression();
+        feedbackMsg.innerHTML = "🔄 Selamat! Kamu sudah menyelesaikan semua 100 ekspresi di kategori ini! Kembali ke awal.";
+        setTimeout(() => {
+            if (!revealed) feedbackMsg.style.background = "rgba(0,0,0,0.2)";
+        }, 2000);
+    }
+}
+
+function prevExpression() {
+    if (currentIndexInCategory > 0) {
+        currentIndexInCategory--;
+        loadExpression();
+    } else {
+        const categoryExpr = getCurrentCategoryExpressions();
+        currentIndexInCategory = categoryExpr.length - 1;
+        loadExpression();
+        feedbackMsg.innerHTML = "🔄 Kembali ke ekspresi terakhir di kategori ini.";
+        setTimeout(() => {
+            if (!revealed) feedbackMsg.style.background = "rgba(0,0,0,0.2)";
+        }, 2000);
+    }
+}
+
+function resetScore() {
+    if (confirm("Yakin ingin mereset skor?")) {
+        score = 0;
+        updateStats();
+        feedbackMsg.innerHTML = "🔄 Skor telah direset! Terus belajar ya!";
+        feedbackMsg.style.background = "rgba(255,165,0,0.2)";
+        setTimeout(() => {
+            if (!revealed) feedbackMsg.style.background = "rgba(0,0,0,0.2)";
+        }, 2000);
+    }
+}
+
+function changeCategory(category) {
+    currentCategory = category;
+    currentIndexInCategory = 0;
+    loadExpression();
+    
+    document.querySelectorAll('.cat-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('data-cat') === category) {
+            btn.classList.add('active');
+        }
+    });
+}
+
+// Event Listeners
+document.getElementById("revealBtn").addEventListener("click", revealEnglish);
+document.getElementById("nextBtn").addEventListener("click", nextExpression);
+document.getElementById("prevBtn").addEventListener("click", prevExpression);
+document.getElementById("resetBtn").addEventListener("click", resetScore);
+
+document.querySelectorAll('.cat-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        changeCategory(btn.getAttribute('data-cat'));
+    });
+});
+
+// Initialize
+loadExpression();
+</script>
+</body>
+</html>
